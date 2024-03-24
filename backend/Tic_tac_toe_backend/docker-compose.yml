@@ -1,0 +1,8 @@
+version: '3.4'
+
+services:
+  tic_tac_toe_backend:
+    image: ${DOCKER_REGISTRY-}tictactoebackend
+    build:
+      context: .
+      dockerfile: ./Dockerfile

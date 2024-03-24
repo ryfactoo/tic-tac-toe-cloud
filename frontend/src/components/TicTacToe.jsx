@@ -57,14 +57,14 @@ function checkWinner(tiles, setStrikeClass, setGameState) {
   }
 }
 
-function TicTacToe() {
+function TicTacToe({player}) {
   const [tiles, setTiles] = useState(Array(9).fill(null));
   const [playerTurn, setPlayerTurn] = useState(PLAYER_X);
   const [strikeClass, setStrikeClass] = useState();
   const [gameState, setGameState] = useState(GameState.inProgress);
 
   const handleTileClick = (index) => {
-    if (gameState !== GameState.inProgress) {
+    if (gameState !== GameState.inProgress || playerTurn !== player) {
       return;
     }
 
@@ -113,6 +113,7 @@ function TicTacToe() {
         tiles={tiles}
         onTileClick={handleTileClick}
         strikeClass={strikeClass}
+        player={player}
       />
       <GameOver gameState={gameState} />
       <Reset gameState={gameState} onReset={handleReset} />

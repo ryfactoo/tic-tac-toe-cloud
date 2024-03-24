@@ -1,0 +1,7 @@
+﻿@Tic_tac_toe_backend_HostAddress = http://localhost:5252
+
+GET {{Tic_tac_toe_backend_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
+
