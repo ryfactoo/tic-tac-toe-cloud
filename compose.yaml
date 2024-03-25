@@ -1,0 +1,24 @@
+version: "3.8"
+
+
+services:
+  backend:
+    build:
+      context: ./backend/Tic_tac_toe_backend/
+      target: final
+    ports:
+      - 8080:8080
+      - 8081:8081
+ 
+ 
+  frontend:
+    build:
+      context: ./frontend/
+      args:
+        DEFAULT_APP_API_DOMAIN: "http://localhost"
+        DEFAULT_APP_PORT: 8080
+    ports:
+      - 3000:3000
+
+    depends_on:
+      - backend

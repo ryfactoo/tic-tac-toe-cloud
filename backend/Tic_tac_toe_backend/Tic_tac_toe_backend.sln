@@ -5,8 +5,6 @@ VisualStudioVersion = 25.0.1706.9
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tic_tac_toe_backend", "Tic_tac_toe_backend.csproj", "{D1EAC2C9-080F-4247-8FFC-8C845CA89C06}"
 EndProject
-Project("{E53339B2-1760-4266-BCC7-CA923CBCF16C}") = "docker-compose", "docker-compose.dcproj", "{09A27927-B6F7-423C-BF48-F620A20EB7EB}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -17,10 +15,6 @@ Global
 		{D1EAC2C9-080F-4247-8FFC-8C845CA89C06}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D1EAC2C9-080F-4247-8FFC-8C845CA89C06}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D1EAC2C9-080F-4247-8FFC-8C845CA89C06}.Release|Any CPU.Build.0 = Release|Any CPU
-		{09A27927-B6F7-423C-BF48-F620A20EB7EB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{09A27927-B6F7-423C-BF48-F620A20EB7EB}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{09A27927-B6F7-423C-BF48-F620A20EB7EB}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{09A27927-B6F7-423C-BF48-F620A20EB7EB}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
