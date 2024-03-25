@@ -1,8 +1,7 @@
 const GameState = {
-  playerXWins: 0,
-  playerOWins: 1,
-  draw: 2,
-  inProgress: 3,
+  pending: 0,
+  inProgress: 1,
+  finished: 2
 };
 
 export default GameState;
