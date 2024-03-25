@@ -16,8 +16,22 @@ builder.Services.AddDistributedMemoryCache();
 builder.Services.AddSession(options =>
 {
     options.IdleTimeout = TimeSpan.FromMinutes(10);
-    options.Cookie.HttpOnly = true;
+    options.Cookie.HttpOnly = false;
     options.Cookie.IsEssential = true;
+    options.Cookie.SameSite = SameSiteMode.None;
+    options.Cookie.SecurePolicy = CookieSecurePolicy.Always;
+});
+
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy("AllowSpecificOrigin",
+        builder =>
+        {
+            builder.WithOrigins("http://localhost:3000")
+                   .AllowAnyMethod()
+                   .AllowAnyHeader()
+                   .AllowCredentials();
+        });
 });
 
 builder.Services.AddSingleton<IGameContext, GamesRepository>();
@@ -31,13 +45,21 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
 }
 
+app.UseCors("AllowSpecificOrigin");
+
 app.UseSession();
+
 
 app.UseHttpsRedirection();
 
 
 app.MapGet("/nick/{nick}", (string nick, HttpContext httpContext) =>
 {
+    if(nick == null || nick.Trim().Length == 0)
+    {
+        return Results.BadRequest();
+    }
+
     httpContext.Session.SetString("nick", nick);
     return Results.Ok();
 });
@@ -55,8 +77,9 @@ app.MapGet("/newGame/random", (HttpContext httpContext, IGameContext gameContext
 
 
     var game = AsingToGame(sessionId, nick, gameContext);
+    var (_, playerId) = game.Players[sessionId];
 
-    return Results.Ok(game.State);
+    return Results.Ok(new { state = game.State, playerSign = Game.playerSigns[playerId] });
 })
 .WithOpenApi();
 
@@ -105,7 +128,7 @@ app.Run();
 Game GetPendingGame(IGameContext gameContext)
 {
     var game = gameContext.GetGames()
-        .Where(game => game.Status == GameStatusType.Pending)
+        .Where(game => game.Status == GameStatusType.Pending )
         .FirstOrDefault();
 
     return game;
@@ -115,7 +138,7 @@ Game GetPendingGame(IGameContext gameContext)
 Game GetCurrentGame(string sessionId, IGameContext gameContext)
 {
     var game = gameContext.GetGames()
-        .Where(game => game.Players.ContainsKey(sessionId))
+        .Where(game => game.Players.ContainsKey(sessionId) && game.Status != GameStatusType.Pending)
         .LastOrDefault();
 
     return game;
@@ -131,6 +154,10 @@ Game AsingToGame(string sessionId, string nick, IGameContext gameContext)
         pendingGame = new Game();
         pendingGame.Players.Add(sessionId, (nick, 0));
         gameContext.AddGame(pendingGame);
+    }
+    else if (pendingGame.Players.ContainsKey(sessionId))
+    {
+        return pendingGame;
     }
     else
     {

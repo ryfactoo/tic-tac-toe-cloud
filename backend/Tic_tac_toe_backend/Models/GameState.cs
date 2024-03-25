@@ -22,11 +22,10 @@ namespace Tic_tac_toe_backend.Models
 
     public enum GameStatusType
     {
-        Pending,
-        InProgress,
-        Finished
+        Pending = 0,
+        InProgress = 1,
+        Finished = 2
     }
 
 
 }
-

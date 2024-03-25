@@ -1,8 +1,17 @@
 import "./App.css";
-import TicTacToe from "./components/TicTacToe";
+import RandomGame from "./components/RandomGame";
+
+export const API_URL = "https://localhost:57438";
 
 function App() {
-  return <TicTacToe player={"O"} />;
+
+  return (
+    <div>
+      <RandomGame/>
+    </div>
+  );
+
 }
+
 
 export default App;

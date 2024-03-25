@@ -18,7 +18,7 @@ namespace Tic_tac_toe_backend.Models
 			new List<int> {0, 4, 8},
 			new List<int> {2, 4, 6}
 		};
-        public Guid Id { get; } = new Guid();
+		public Guid Id { get; } = Guid.NewGuid();
 		public Dictionary<string, (string, int)> Players { get; set; } = new Dictionary<string, (string, int)>();
 		public GameState State { get; set; } = new GameState();
 		public GameStatusType Status { get { return State.GameStatus; } set { State.GameStatus = value; } }
