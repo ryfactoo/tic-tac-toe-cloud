@@ -138,7 +138,7 @@ Game GetPendingGame(IGameContext gameContext)
 Game GetCurrentGame(string sessionId, IGameContext gameContext)
 {
     var game = gameContext.GetGames()
-        .Where(game => game.Players.ContainsKey(sessionId) && game.Status != GameStatusType.Pending)
+        .Where(game => game.Players.ContainsKey(sessionId))
         .LastOrDefault();
 
     return game;
@@ -154,10 +154,6 @@ Game AsingToGame(string sessionId, string nick, IGameContext gameContext)
         pendingGame = new Game();
         pendingGame.Players.Add(sessionId, (nick, 0));
         gameContext.AddGame(pendingGame);
-    }
-    else if (pendingGame.Players.ContainsKey(sessionId))
-    {
-        return pendingGame;
     }
     else
     {

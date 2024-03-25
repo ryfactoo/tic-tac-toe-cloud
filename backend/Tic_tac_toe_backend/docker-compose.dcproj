@@ -3,7 +3,7 @@
   <PropertyGroup Label="Globals">
     <ProjectVersion>2.1</ProjectVersion>
     <DockerTargetOS>Linux</DockerTargetOS>
-    <ProjectGuid>{1FD4370D-C9DC-4543-AC2F-C8E25B7889D8}</ProjectGuid>
+    <ProjectGuid>{09A27927-B6F7-423C-BF48-F620A20EB7EB}</ProjectGuid>
     <DockerLaunchBrowser>True</DockerLaunchBrowser>
     <DockerServiceUrl>{Scheme}://localhost:{ServicePort}/swagger</DockerServiceUrl>
     <DockerServiceName>tic_tac_toe_backend</DockerServiceName>

@@ -8,11 +8,13 @@ function RandomGame(){
     const [initialState, setInitialState] = useState(null);
 
     useEffect(() => {
-        getNewRandomGame().then(result => {
-            setInitialState(result);
-        }).catch(error => {
-            console.error('Error initializing game:', error);
-        });
+        if(currentNick !== ''){
+            getNewRandomGame().then(result => {
+                setInitialState(result);
+            }).catch(error => {
+                console.error('Error initializing game:', error);
+            });
+        }
     }, [currentNick]);
     
     function handleNickSubmit(nick) {

@@ -1,7 +1,7 @@
 import "./App.css";
 import RandomGame from "./components/RandomGame";
 
-export const API_URL = "https://localhost:57438";
+export const API_URL = "https://localhost:51056";
 
 function App() {
 
