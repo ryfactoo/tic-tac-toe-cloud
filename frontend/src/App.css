@@ -111,3 +111,29 @@ h1 {
   width: 100%;
   font-size: 1.5em;
 }
+
+
+.text-input {
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 16px;
+  margin-right: 10px; /* Odstęp między polem tekstowym a przyciskiem */
+  width: 250px; /* Możesz dostosować szerokość według potrzeb */
+}
+
+/* Styl dla przycisku submit */
+.submit-button {
+  padding: 10px 20px;
+  background-color: #007bff; /* Kolor tła */
+  color: #fff; /* Kolor tekstu */
+  border: none;
+  border-radius: 5px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+/* Styl dla przycisku submit po najechaniu kursorem */
+.submit-button:hover {
+  background-color: #0056b3; /* Zmiana koloru tła po najechaniu kursorem */
+}

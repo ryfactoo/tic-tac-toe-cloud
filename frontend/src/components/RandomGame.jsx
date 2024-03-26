@@ -46,7 +46,7 @@ function RandomGame(){
     );
 }
 
-async function getNewRandomGame(){
+export async function getNewRandomGame(){
     const response = await fetch(`${API_URL}/newGame/random`, {
             method: 'GET',
             credentials: 'include'

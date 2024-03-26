@@ -1,12 +1,9 @@
-import GameState from "./GameState";
+import RandomGame from "./RandomGame";
 
 function Reset({ gameState, onReset }) {
-  if (gameState === GameState.inProgress) {
-    return;
-  }
   return (
     <button onClick={onReset} className="reset-button">
-      Play Again
+      Restart
     </button>
   );
 }

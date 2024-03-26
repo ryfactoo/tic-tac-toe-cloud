@@ -163,9 +163,15 @@ function TicTacToe({initialState}) {
         player={player}
       />
       <GameOver gameState={gameState} />
-      {/* <Reset gameState={gameState} onReset={handleReset} /> */}
       </div>
             )}
+        <div>
+          {gameState === GameState.finished ? (
+          <div>
+            <Reset gameState={gameState} onReset={() => window.location.reload()} />
+          </div>
+      ) : null}
+      </div>
     </div>
   );
 }
