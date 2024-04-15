@@ -1,0 +1,14 @@
+[Unit]
+Description=Docker Compose Application
+Requires=docker.service
+After=docker.service
+
+[Service]
+Restart=no
+WorkingDirectory=/home/ec2-user
+ExecStartPre=/bin/bash -c 'PUBLIC_IP=$(curl -s ifconfig.me); echo "API_DOMAIN=http://$PUBLIC_IP" > /home/ec2-user/.env'
+ExecStart=/usr/local/bin/docker-compose up -d
+TimeoutStartSec=0
+
+[Install]
+WantedBy=multi-user.target
